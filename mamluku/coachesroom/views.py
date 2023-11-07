@@ -1,8 +1,20 @@
 from django.shortcuts import render
+from .models import Room
+
+#rooms=[
+ #   {'id':1,'name':'Training'},
+  #  {'id':2,'name':'Fixtures'},
+   # {'id':3,'name':'Post-Match Reviews'},
+     
+#]
 
 def home(request):
-    return render(request,'coachesroom/homepage.html')
+    rooms = Room.objects.all()
+    context={'rooms':rooms}
+    return render(request,'coachesroom/homepage.html',context)
 
-def room(request):
-    return render(request,'coachesroom/room.html')
+def room(request,pk):
+    room=Room.objects.get(id=pk)
+    context={'rooms':room}    
+    return render(request,'coachesroom/chat.html',context)
 

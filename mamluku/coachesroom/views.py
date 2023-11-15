@@ -75,8 +75,9 @@ def home(request):
 
 def room(request,pk):
     room=Room.objects.get(id=pk)
-    context={'rooms':room}    
-    return render(request,'coachesroom/chat.html',context)
+    room_messages=room.message_set.all()
+    context={'rooms':room,'room_messages':room_messages}    
+    return render(request,'coachesroom/room.html',context)
 
 @login_required(login_url='login')
 def createRoom(request):

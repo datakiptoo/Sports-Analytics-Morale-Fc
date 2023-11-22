@@ -11,7 +11,7 @@
     {%  for message in messages %}
 
     <div>
-        <small>@{{message.user}}  {{message.created}} </small>
+        <small>@{{message.user}}  {{message.created|timesince}} ago </small>
 
     </div>
 

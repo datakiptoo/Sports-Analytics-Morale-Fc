@@ -84,9 +84,9 @@ def room(request,pk):
             body=request.POST.get('body')
         )
         room.participants.add(request.user)
-        return redirect('coachesroom/room.html',pk=room.id)
+        return redirect('Room',pk=room.id)
         
-    context={'rooms':room,'room_messages':room_messages,'participants':participants}    
+    context={'room':room,'room_messages':room_messages,'participants':participants}    
     return render(request,'coachesroom/room.html',context)
 
 @login_required(login_url='login')
